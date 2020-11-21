@@ -29,3 +29,5 @@ notas = response.read().decode('utf-8')
 idAlvo = input("Digite o id a ser procurado: ")
 
 print(filtraNotas(notas, idAlvo))
+
+sleep(10)
