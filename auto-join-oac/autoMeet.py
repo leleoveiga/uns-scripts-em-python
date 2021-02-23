@@ -22,10 +22,10 @@ driver = webdriver.Chrome(options=opt, executable_path='./chromedriver.exe')
 driver.get("https://accounts.google.com/signin/v2/identifier?hl=pt-BR&passive=true")
 
 def entrarNaAula():
-  driver.get("https://meet.google.com/zgm-adkx-tfp") #oac
+  driver.get("https://meet.google.com/zgm-adkx-tfp") #poe o link do meet q tu quer entrar
   sleep(3.3)
   elem = driver.find_element_by_xpath("//*[@id='yDmH0d']/div[3]/div/div[2]/div[3]/div/span/span")
-    # elem = driver.find_element_by_xpath('//span[@class="CwaK9"]//span[@class="RveJvd snByac"]')
+  # elem = driver.find_element_by_xpath('//span[@class="CwaK9"]//span[@class="RveJvd snByac"]')
 
   elem = driver.switch_to.active_element
   sleep(0.5)
