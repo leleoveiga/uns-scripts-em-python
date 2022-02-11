@@ -2,6 +2,8 @@ from selenium import webdriver
 from time import sleep
 import schedule
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+import pyautogui
 
 # leonardo.porfirio@ccc.ufcg.edu.br
 
@@ -21,20 +23,37 @@ driver = webdriver.Chrome(options=opt, executable_path='./chromedriver.exe')
 # driver.maximize_window()
 driver.get("https://accounts.google.com/signin/v2/identifier?hl=pt-BR&passive=true")
 
-def entrarNaAula():
-  driver.get("https://meet.google.com/zgm-adkx-tfp") #poe o link do meet q tu quer entrar
-  sleep(3.3)
-  elem = driver.find_element_by_xpath("//*[@id='yDmH0d']/div[3]/div/div[2]/div[3]/div/span/span")
-  # elem = driver.find_element_by_xpath('//span[@class="CwaK9"]//span[@class="RveJvd snByac"]')
+def gravar():
+    pyautogui.keyDown('ctrl')
+    pyautogui.keyDown('shift')
+    pyautogui.keyDown(']')
+    sleep(0.5)
+    pyautogui.keyUp('ctrl')
+    pyautogui.keyUp('shift')
+    pyautogui.keyUp(']')
 
-  elem = driver.switch_to.active_element
-  sleep(0.5)
-  elem.click()
-
-  sleep(0.5)
-  elem = driver.find_element_by_xpath("/html/body/div[1]/c-wiz/div/div/div[8]/div[3]/div/div/div[2]/div/div[1]/div[2]/div/div[2]/div/div[1]/div[1]/span/span")
+def clickBotaoPedirPraEntrar():
+    elem = driver.find_element(By.XPATH, "//*[@id='yDmH0d']/c-wiz/div/div/div[9]/div[3]/div/div/div[3]/div/div/div[2]/div/div[2]/div/div[1]/div[1]/span")
   # elem = driver.switch_to.active_element
-  elem.click()
+    elem.click()
+
+def clickBotaoMic():
+    elem = driver.find_element(By.XPATH, "//*[@id='yDmH0d']/div[3]/div/div[2]/div[3]/div/span/span")
+
+    elem = driver.switch_to.active_element
+    sleep(0.5)
+    elem.click()
+
+meetLink = "https://meet.google.com/mod-mtig-ikn"
+
+def entrarNaAula():
+  driver.get(meetLink) #poe o link do meet q tu quer entrar
+  sleep(3.3)
+  clickBotaoMic()
+
+  sleep(0.5)
+  clickBotaoPedirPraEntrar()
+  gravar()
 
 # sleep(8)
 # entrarNaAula()
